@@ -4,8 +4,357 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso de Desenvolvimento de Sistemas - SETEC</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis de cores */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --text: #333;
+            --text-light: #777;
+            --bg-light: #f9f9f9;
+            --bg-section: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Seções */
+        .secao {
+            padding: 4rem 0;
+            background-color: var(--bg-section);
+        }
+
+        .secao h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .secao h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .conteudo {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .texto {
+            flex: 1;
+        }
+
+        .midia {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Cards de imagem */
+        .card-imagem {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card-imagem:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-imagem img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-imagem p {
+            padding: 1rem;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-light);
+            background: var(--light);
+        }
+
+        /* Container de vídeo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* SEÇÃO TEMAS DE IA - LAYOUT HORIZONTAL */
+        #secao2 {
+            padding: 3rem 0;
+            background: linear-gradient(to right, #f0f8ff, #e6f7ff);
+            overflow: hidden;
+        }
+
+        .secao-temas {
+            padding: 2rem 0;
+        }
+
+        .temas-wrapper {
+            overflow-x: auto;
+            padding: 1.5rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) var(--light);
+        }
+
+        .temas-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .temas-wrapper::-webkit-scrollbar-track {
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .temas-wrapper::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        .temas-container {
+            display: flex;
+            gap: 2rem;
+            padding: 0 1rem;
+            width: max-content;
+        }
+
+        .tema-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            width: 350px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            height: 480px;
+        }
+
+        .tema-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .tema-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tema-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .tema-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Seção futurista */
+        .futurista {
+            background: linear-gradient(to bottom, #f0f8ff, #e6f7ff);
+        }
+
+        .temas-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tema-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tema-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tema-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Instruções de uso */
+        .scroll-instruction {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-light);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .conteudo {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .secao h2 {
+                font-size: 1.8rem;
+            }
+            
+            .secao {
+                padding: 2rem 0;
+            }
+            
+            .tema-card {
+                width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -52,37 +401,73 @@
             </div>
         </section>
 
-        <!-- SEGUNDA SEÇÃO -->
-        <section id="secao2" class="secao">
+        <!-- SEGUNDA SEÇÃO - TEMAS DE IA -->
+        <section id="secao2" class="secao-temas">
             <div class="container">
                 <h2>Temas de Inteligência Artificial</h2>
-                <div class="temas-container">
-                    <div class="tema-card">
-                        <div class="tema-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
+                <div class="temas-wrapper">
+                    <div class="temas-container">
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Perigos da IA</h3>
+                            <p>A Inteligência Artificial, apesar de seus avanços promissores, apresenta diversos perigos que exigem atenção e regulamentação cuidadosa. Os sistemas de IA podem tomar decisões imprevisíveis e potencialmente perigosas quando não são devidamente supervisionados.</p>
+                            <p>Além disso, a complexidade de alguns algoritmos torna difícil prever todos os possíveis resultados, especialmente em situações críticas onde vidas ou recursos importantes estão em jogo.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/CmAcro8YblU" frameborder="0" allowfullscreen></iframe>
+                            </div>
                         </div>
-                        <h3>Perigos da IA</h3>
-                        <p>A Inteligência Artificial, apesar de seus avanços promissores, apresenta diversos perigos que exigem atenção e regulamentação cuidadosa.</p>
-                        <div class="video-container">
-                          <a href="https://www.youtube.com/watch?v=CmAcro8YblU&t=3s">
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <h3>Exemplos de Perigos</h3>
+                            <p>Viés e Discriminação: Algoritmos podem perpetuar e amplificar preconceitos existentes nos dados de treinamento.</p>
+                            <p>Perda de Privacidade: Sistemas de vigilância e análise de dados podem invadir a privacidade individual.</p>
+                            <p>Deslocamento de Trabalhadores: Automação pode substituir empregos em larga escala.</p>
+                            <p>Decisões Opacas: Mecanismos de decisão não transparentes em áreas críticas como justiça e saúde.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/i6xbl9QzIK0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Proteção e Ética</h3>
+                            <p>É fundamental desenvolver frameworks éticos robustos para o desenvolvimento e implementação de IA. Isso inclui:</p>
+                            <p>Transparência algorítmica, Prestação de contas sobre decisões, Regulamentações governamentais, Auditorias independentes, Mecanismos de supervisão humana.</p>
+                            <p>Sem essas salvaguardas, os riscos associados à IA podem superar seus benefícios, criando sérios problemas para a sociedade.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/ix6qz4eKqIs" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Impacto Social</h3>
+                            <p>A IA está transformando profundamente a sociedade em múltiplos níveis:</p>
+                            <p>Economia: Mudanças no mercado de trabalho e novos modelos de negócio.</p>
+                            <p>Educação: Novas ferramentas de aprendizado e adaptação curricular.</p>
+                            <p>Saúde: Diagnósticos precisos e tratamentos personalizados.</p>
+                            <p>Comunicação: Tradução instantânea e assistentes virtuais.</p>
+                            <p>Essas transformações trazem tanto oportunidades quanto desafios que devem ser cuidadosamente gerenciados.</p>
                         </div>
                     </div>
-                    
-                    <div class="tema-card">
-                        <div class="tema-icon">
-                            <i class="fas fa-list-ol"></i>
-                        </div>
-                        <h3>Exemplos de Perigos</h3>
-                        <p>Viés e Discriminação, Perda de Privacidade, Deslocamento de Trabalhadores, Decisões Opacas, Armamento Autônomo, Dependência Excessiva, Manipulação e Desinformação e entre outras.</p>
-                        <div class="video-container">
-                          <a href="https://www.youtube.com/watch?v=i6xbl9QzIK0&t=91s">
-                        </div>
-                    </div>
+                </div>
+                <div class="scroll-instruction">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <span>Role horizontalmente para ver mais temas</span>
                 </div>
             </div>
         </section>
 
-        <!-- TERCEIRA SEÇÃO -->'
+        <!-- TERCEIRA SEÇÃO -->
         <section id="secao3" class="secao futurista">
             <div class="container">
                 <h2>SETEC: Visão Futurista</h2>
@@ -116,7 +501,7 @@
                             <p>Visão futurista da SETEC com IA integrada</p>
                         </div>
                         <div class="video-container">
-                               <a href="https://www.youtube.com/watch?v=IH-wBijX53M">
+                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
