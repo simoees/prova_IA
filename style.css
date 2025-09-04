@@ -1,11 +1,11 @@
-/* Variáveis de cores - Azul mais vivo */
+/* Variáveis de cores */
 :root {
-    --primary: #1a5276;
-    --secondary: #2980b9;
+    --primary: #2c3e50;
+    --secondary: #3498db;
     --accent: #e74c3c;
     --light: #ecf0f1;
     --dark: #2c3e50;
-    --success: #27ae60;
+    --success: #2ecc71;
     --warning: #f39c12;
     --text: #333;
     --text-light: #777;
@@ -57,7 +57,7 @@ header p {
 
 /* Navegação */
 nav {
-    background-color: var(--primary);
+    background-color: var(--dark);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -85,7 +85,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Seções */
@@ -180,59 +180,42 @@ nav a:hover {
     border: none;
 }
 
-/* SEÇÃO TEMAS DE IA - MAIS EXTENSA */
-#secao2 {
-    padding: 4rem 0;
-    background: linear-gradient(to right, #e8f4fc, #d4e6f1);
-}
-
+/* Seção de temas */
 .temas-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .tema-card {
     background: white;
-    padding: 2rem;
-    border-radius: 10px;
+    padding: 1.5rem;
+    border-radius: 8px;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    text-align: left;
-    min-height: 420px;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 
 .tema-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .tema-icon {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: var(--secondary);
-    margin-bottom: 1.2rem;
-    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .tema-card h3 {
     color: var(--primary);
-    margin-bottom: 1.2rem;
-    text-align: center;
-    font-size: 1.4rem;
-}
-
-.tema-card p {
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 /* Seção futurista */
 .futurista {
-    background: linear-gradient(to bottom, #e8f4fc, #d4e6f1);
+    background: linear-gradient(to bottom, #f0f8ff, #e6f7ff);
 }
 
 .temas-lista {
@@ -265,10 +248,10 @@ nav a:hover {
 
 /* Rodapé */
 footer {
-    background: var(--primary);
+    background: var(--dark);
     color: white;
     text-align: center;
-    padding: 2.5rem 0;
+    padding: 2rem 0;
     margin-top: 2rem;
 }
 
@@ -303,11 +286,6 @@ footer p {
     }
     
     .secao {
-        padding: 2.5rem 0;
-    }
-    
-    .tema-card {
-        min-height: 380px;
-        padding: 1.5rem;
+        padding: 2rem 0;
     }
 }
