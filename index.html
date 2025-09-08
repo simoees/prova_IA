@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,11 +21,6 @@
             --text-secondary: #cbd5e1;
             --shadow: 0 4px 20px rgba(2, 12, 27, 0.7);
             --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-            
-            /* Cores das seções */
-            --section1-bg: #0a192f;
-            --section2-bg: #1d3a5c;
-            --section3-bg: #112240;
         }
 
         /* Reset e estilos gerais */
@@ -39,7 +35,7 @@
             line-height: 1.6;
             color: var(--text);
             background-color: var(--midnight);
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 50%, rgba(28, 64, 117, 0.2) 0%, transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(28, 64, 117, 0.2) 0%, transparent 25%);
         }
@@ -69,7 +65,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 linear-gradient(45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%),
                 linear-gradient(-45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%);
             background-size: 10px 10px;
@@ -81,7 +77,7 @@
             margin-bottom: 0.8rem;
             position: relative;
             z-index: 2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 8px var(--blue); /* Mais detalhes azuis */
         }
 
         header p {
@@ -100,7 +96,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); /* Mais detalhes azuis */
             border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         }
 
@@ -132,7 +128,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--blue);
+            background: linear-gradient(to right, transparent, var(--blue), transparent); /* Mais detalhes azuis */
             transform: translateX(-100%);
             transition: var(--transition);
         }
@@ -161,16 +157,19 @@
             position: relative;
         }
 
+        /* Fundo de cada seção com cores diferentes e mais detalhes azuis */
         #secao1 {
-            background-color: var(--section1-bg);
+            background: linear-gradient(180deg, var(--midnight) 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--light-slate);
         }
 
         #secao2 {
-            background-color: var(--section2-bg);
+            background: linear-gradient(180deg, var(--navy) 0%, var(--slate) 100%);
+            border-bottom: 1px solid var(--light-slate);
         }
 
         #secao3 {
-            background-color: var(--section3-bg);
+            background: linear-gradient(180deg, var(--slate) 0%, var(--light-slate) 100%);
         }
 
         .secao::before {
@@ -192,6 +191,7 @@
             font-size: 2.4rem;
             position: relative;
             padding-bottom: 1rem;
+            text-shadow: 0 0 10px var(--blue);
         }
 
         .secao h2::after {
@@ -241,8 +241,8 @@
 
         .card-imagem:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
-            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8), 0 0 20px var(--blue); /* Mais detalhes azuis */
+            border-color: rgba(59, 130, 246, 0.5);
         }
 
         .card-imagem img {
@@ -286,142 +286,6 @@
             height: 100%;
             border: none;
         }
-<!DOCTYPE html>
-                    <i class="fas fa-arrows-alt-h"></i>
-                    <span>Role horizontalmente para ver mais temas</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- TERCEIRA SEÇÃO -->
-        <section id="secao3" class="secao futurista">
-            <div class="container">
-                <h2>SETEC: Visão Futurista</h2>
-                <div class="conteudo">
-                    <div class="texto">
-                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
-                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
-                        <h3>Alguns temas que podem ser implementados:</h3>
-                        <div class="temas-lista">
-                            <div class="tema-item">
-                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
-                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
-                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
-                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
-                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="midia">
-                        <div class="card-imagem">
-                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
-                            <p>Visão futurista da SETEC com IA integrada</p>
-                        </div>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
-            <p>SETEC - 2025</p>
-        </div>
-    </footer>
-    <nav>
-    <div class="container">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="curso.html"><i class="fas fa-laptop-code"></i> Curso</a></li>
-            <li><a href="ia.html"><i class="fas fa-brain"></i> IA</a></li>
-            <li><a href="setec.html"><i class="fas fa-microchip"></i> SETEC</a></li>
-        </ul>
-    </div>
-</nav>
-</body>
-</html>
-<!DOCTYPE html>
-                    <i class="fas fa-arrows-alt-h"></i>
-                    <span>Role horizontalmente para ver mais temas</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- TERCEIRA SEÇÃO -->
-        <section id="secao3" class="secao futurista">
-            <div class="container">
-                <h2>SETEC: Visão Futurista</h2>
-                <div class="conteudo">
-                    <div class="texto">
-                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
-                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
-                        <h3>Alguns temas que podem ser implementados:</h3>
-                        <div class="temas-lista">
-                            <div class="tema-item">
-                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
-                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
-                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
-                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
-                            </div>
-                            <div class="tema-item">
-                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
-                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="midia">
-                        <div class="card-imagem">
-                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
-                            <p>Visão futurista da SETEC com IA integrada</p>
-                        </div>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
-            <p>SETEC - 2025</p>
-        </div>
-    </footer>
-    <nav>
-    <div class="container">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="curso.html"><i class="fas fa-laptop-code"></i> Curso</a></li>
-            <li><a href="ia.html"><i class="fas fa-brain"></i> IA</a></li>
-            <li><a href="setec.html"><i class="fas fa-microchip"></i> SETEC</a></li>
-        </ul>
-    </div>
-</nav>
-</body>
-</html>
 
         /* Seção de temas */
         .temas-container {
@@ -458,7 +322,7 @@
 
         .tema-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
+            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8), 0 0 20px var(--blue); /* Mais detalhes azuis */
             border-color: rgba(59, 130, 246, 0.3);
         }
 
@@ -563,7 +427,7 @@
 
         .tema-item:hover {
             transform: translateX(8px);
-            box-shadow: 0 8px 20px rgba(2, 12, 27, 0.6);
+            box-shadow: 0 8px 20px rgba(2, 12, 27, 0.6), 0 0 10px var(--blue); /* Mais detalhes azuis */
         }
 
         .tema-item:hover::before {
@@ -591,4 +455,136 @@
             background: var(--navy);
             color: var(--text);
             text-align: center;
-            padding
+            padding: 2rem 0;
+            box-shadow: 0 -4px 15px rgba(59, 130, 246, 0.3); /* Mais detalhes azuis */
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Curso de Desenvolvimento de Sistemas</h1>
+            <p>Conheça a feira de tecnologia do nosso curso e os projetos incríveis que criamos!</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#secao1" class="active"><i class="fas fa-microchip"></i> A SETEC</a></li>
+                <li><a href="#secao2"><i class="fas fa-brain"></i> Temas de IA</a></li>
+                <li><a href="#secao3"><i class="fas fa-eye"></i> Visão Futura</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="secao1" class="secao">
+            <div class="container">
+                <h2>SETEC: Semana de Tecnologia</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <p>A <strong>SETEC</strong>, ou Semana de Tecnologia, é um evento anual que celebra a inovação e o aprendizado no campo do desenvolvimento de sistemas. Durante esta semana, os estudantes têm a oportunidade de apresentar seus projetos mais inovadores, fruto de meses de trabalho árduo e dedicação. É um momento de troca de conhecimento, networking e inspiração para a próxima geração de desenvolvedores.</p>
+                        <p>Neste ano, a feira terá como tema a <strong>Inteligência Artificial</strong>, explorando desde seus fundamentos até suas aplicações mais complexas e éticas. Acreditamos que a IA é a tecnologia do futuro e que, ao compreendê-la, nossos alunos estarão mais preparados para os desafios do mercado de trabalho.</p>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1516259728285-b1a9e88b209e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Exposição de projetos de tecnologia na SETEC">
+                            <p>Exposição de projetos no auditório da SETEC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="secao2" class="secao secao-temas">
+            <div class="container">
+                <h2>Temas Explorados na Feira</h2>
+                <div class="temas-wrapper">
+                    <div class="temas-container">
+                        <div class="tema-card">
+                            <i class="tema-icon fas fa-robot"></i>
+                            <h3>Robótica e Automação</h3>
+                            <p>Projetos que utilizam robôs programáveis e sistemas de automação para resolver problemas do cotidiano.</p>
+                        </div>
+                        <div class="tema-card">
+                            <i class="tema-icon fas fa-cogs"></i>
+                            <h3>Desenvolvimento Web Avançado</h3>
+                            <p>Soluções modernas e escaláveis usando frameworks como React, Angular e Vue.js.</p>
+                        </div>
+                        <div class="tema-card">
+                            <i class="tema-icon fas fa-mobile-alt"></i>
+                            <h3>Aplicações Mobile</h3>
+                            <p>Criação de aplicativos nativos e híbridos para iOS e Android, com foco em usabilidade e design.</p>
+                        </div>
+                        <div class="tema-card">
+                            <i class="tema-icon fas fa-database"></i>
+                            <h3>Big Data e Análise de Dados</h3>
+                            <p>Explorando o poder dos dados para tomar decisões e criar sistemas inteligentes.</p>
+                        </div>
+                        <div class="tema-card">
+                            <i class="tema-icon fas fa-cloud"></i>
+                            <h3>Computação em Nuvem</h3>
+                            <p>Infraestrutura como código, serviços de nuvem e arquiteturas distribuídas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-instruction">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <span>Role horizontalmente para ver mais temas</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="secao3" class="secao futurista">
+            <div class="container">
+                <h2>SETEC: Visão Futurista</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
+                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
+                        <h3>Alguns temas que podem ser implementados:</h3>
+                        <div class="temas-lista">
+                            <div class="tema-item">
+                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
+                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
+                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
+                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
+                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
+                            <p>Visão futurista da SETEC com IA integrada</p>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
+            <p>SETEC - 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
+```
