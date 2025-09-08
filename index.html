@@ -1,1188 +1,685 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Curso de Desenvolvimento de Sistemas - SETEC</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-
-        /* Variáveis de cores */
-
-        :root {
-
-            --midnight: #0a192f;
-
-            --navy: #112240;
-
-            --slate: #1d3a5c;
-
-            --light-slate: #2e4e7a;
-
-            --blue: #3b82f6;
-
-            --light-blue: #93c5fd;
-
-            --lightest-blue: #e0f2fe;
-
-            --accent: #f59e0b;
-
-            --text: #f8fafc;
-
-            --text-secondary: #cbd5e1;
-
-            --shadow: 0 4px 20px rgba(2, 12, 27, 0.7);
-
-            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-            
-
-            /* Cores das seções */
-
-            --section1-bg: #0a192f;
-
-            --section2-bg: #1d3a5c;
-
-            --section3-bg: #112240;
-
-        }
-
-
-
-        /* Reset e estilos gerais */
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
-        }
-
-
-
-        body {
-
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-            line-height: 1.6;
-
-            color: var(--text);
-
-            background-color: var(--midnight);
-
-            background-image: 
-
-                radial-gradient(circle at 15% 50%, rgba(28, 64, 117, 0.2) 0%, transparent 25%),
-
-                radial-gradient(circle at 85% 30%, rgba(28, 64, 117, 0.2) 0%, transparent 25%);
-
-        }
-
-
-
-        .container {
-
-            width: 90%;
-
-            max-width: 1200px;
-
-            margin: 0 auto;
-
-            padding: 0 15px;
-
-        }
-
-
-
-        /* Cabeçalho */
-
-        header {
-
-            background: linear-gradient(135deg, var(--midnight), var(--navy));
-
-            color: var(--text);
-
-            padding: 3rem 0;
-
-            text-align: center;
-
-            box-shadow: var(--shadow);
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-
-        header::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            background: 
-
-                linear-gradient(45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%),
-
-                linear-gradient(-45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%);
-
-            background-size: 10px 10px;
-
-            z-index: 1;
-
-        }
-
-
-
-        header h1 {
-
-            font-size: 2.8rem;
-
-            margin-bottom: 0.8rem;
-
-            position: relative;
-
-            z-index: 2;
-
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-        }
-
-
-
-        header p {
-
-            font-size: 1.3rem;
-
-            color: var(--light-blue);
-
-            max-width: 700px;
-
-            margin: 0 auto;
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-
-        /* Navegação */
-
-        nav {
-
-            background-color: var(--navy);
-
-            padding: 1rem 0;
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 100;
-
-            box-shadow: var(--shadow);
-
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-
-        }
-
-
-
-        nav ul {
-
-            display: flex;
-
-            justify-content: center;
-
-            list-style: none;
-
-            gap: 1.5rem;
-
-        }
-
-
-
-        nav a {
-
-            color: var(--text);
-
-            text-decoration: none;
-
-            font-weight: 500;
-
-            padding: 0.7rem 1.2rem;
-
-            border-radius: 4px;
-
-            transition: var(--transition);
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 0.5rem;
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-
-        nav a::before {
-
-            content: '';
-
-            position: absolute;
-
-            bottom: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 2px;
-
-            background: var(--blue);
-
-            transform: translateX(-100%);
-
-            transition: var(--transition);
-
-        }
-
-
-
-        nav a:hover {
-
-            color: var(--light-blue);
-
-            background-color: rgba(59, 130, 246, 0.1);
-
-        }
-
-
-
-        nav a:hover::before {
-
-            transform: translateX(0);
-
-        }
-
-
-
-        nav a.active {
-
-            background-color: rgba(59, 130, 246, 0.2);
-
-            color: var(--light-blue);
-
-        }
-
-
-
-        nav a.active::before {
-
-            transform: translateX(0);
-
-        }
-
-
-
-        /* Seções */
-
-        .secao {
-
-            padding: 5rem 0;
-
-            position: relative;
-
-        }
-
-
-
-        #secao1 {
-
-            background-color: var(--section1-bg);
-
-        }
-
-
-
-        #secao2 {
-
-            background-color: var(--section2-bg);
-
-        }
-
-
-
-        #secao3 {
-
-            background-color: var(--section3-bg);
-
-        }
-
-
-
-        .secao::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            background: linear-gradient(45deg, transparent 98%, rgba(59, 130, 246, 0.05) 100%);
-
-            background-size: 30px 30px;
-
-            pointer-events: none;
-
-        }
-
-
-
-        .secao h2 {
-
-            text-align: center;
-
-            margin-bottom: 3rem;
-
-            color: var(--text);
-
-            font-size: 2.4rem;
-
-            position: relative;
-
-            padding-bottom: 1rem;
-
-        }
-
-
-
-        .secao h2::after {
-
-            content: '';
-
-            position: absolute;
-
-            bottom: 0;
-
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width: 100px;
-
-            height: 4px;
-
-            background: linear-gradient(to right, transparent, var(--blue), transparent);
-
-            border-radius: 2px;
-
-        }
-
-
-
-        .conteudo {
-
-            display: flex;
-
-            gap: 3rem;
-
-            margin-top: 2rem;
-
-        }
-
-
-
-        .texto {
-
-            flex: 1;
-
-        }
-
-
-
-        .texto p {
-
-            margin-bottom: 1.5rem;
-
-            color: var(--text-secondary);
-
-            line-height: 1.8;
-
-        }
-
-
-
-        .midia {
-
-            flex: 1;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 2rem;
-
-        }
-
-
-
-        /* Cards de imagem */
-
-        .card-imagem {
-
-            background: linear-gradient(to bottom, var(--navy), var(--slate));
-
-            border-radius: 10px;
-
-            overflow: hidden;
-
-            box-shadow: var(--shadow);
-
-            transition: var(--transition);
-
-            border: 1px solid rgba(59, 130, 246, 0.1);
-
-        }
-
-
-
-        .card-imagem:hover {
-
-            transform: translateY(-8px);
-
-            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
-
-            border-color: rgba(59, 130, 246, 0.3);
-
-        }
-
-
-
-        .card-imagem img {
-
-            width: 100%;
-
-            height: 250px;
-
-            object-fit: cover;
-
-            display: block;
-
-            transition: var(--transition);
-
-        }
-
-
-
-        .card-imagem:hover img {
-
-            transform: scale(1.05);
-
-        }
-
-
-
-        .card-imagem p {
-
-            padding: 1.2rem;
-
-            text-align: center;
-
-            font-style: italic;
-
-            color: var(--light-blue);
-
-            background: rgba(17, 34, 64, 0.7);
-
-            border-top: 1px solid rgba(59, 130, 246, 0.1);
-
-        }
-
-
-
-        /* Container de vídeo */
-
-        .video-container {
-
-            position: relative;
-
-            padding-bottom: 56.25%;
-
-            height: 0;
-
-            overflow: hidden;
-
-            border-radius: 10px;
-
-            box-shadow: var(--shadow);
-
-            border: 1px solid rgba(59, 130, 246, 0.1);
-
-            background: var(--navy);
-
-        }
-
-
-
-        .video-container iframe {
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            border: none;
-
-        }
-
-<!DOCTYPE html>
-
-                    <i class="fas fa-arrows-alt-h"></i>
-
-                    <span>Role horizontalmente para ver mais temas</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TERCEIRA SEÇÃO -->
-
-        <section id="secao3" class="secao futurista">
-
-            <div class="container">
-
-                <h2>SETEC: Visão Futurista</h2>
-
-                <div class="conteudo">
-
-                    <div class="texto">
-
-                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
-
-                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
-
-                        <h3>Alguns temas que podem ser implementados:</h3>
-
-                        <div class="temas-lista">
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
-
-                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
-
-                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
-
-                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
-
-                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="midia">
-
-                        <div class="card-imagem">
-
-                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
-
-                            <p>Visão futurista da SETEC com IA integrada</p>
-
-                        </div>
-
-                        <div class="video-container">
-
-                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- Rodapé -->
-
-    <footer>
-
-        <div class="container">
-
-            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
-
-            <p>SETEC - 2025</p>
-
-        </div>
-
-    </footer>
-
-    <nav>
-
-    <div class="container">
-
-        <ul>
-
-            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-
-            <li><a href="curso.html"><i class="fas fa-laptop-code"></i> Curso</a></li>
-
-            <li><a href="ia.html"><i class="fas fa-brain"></i> IA</a></li>
-
-            <li><a href="setec.html"><i class="fas fa-microchip"></i> SETEC</a></li>
-
-        </ul>
-
-    </div>
-
-</nav>
-
-</body>
-
-</html>
-
-<!DOCTYPE html>
-
-                    <i class="fas fa-arrows-alt-h"></i>
-
-                    <span>Role horizontalmente para ver mais temas</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- TERCEIRA SEÇÃO -->
-
-        <section id="secao3" class="secao futurista">
-
-            <div class="container">
-
-                <h2>SETEC: Visão Futurista</h2>
-
-                <div class="conteudo">
-
-                    <div class="texto">
-
-                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
-
-                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
-
-                        <h3>Alguns temas que podem ser implementados:</h3>
-
-                        <div class="temas-lista">
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
-
-                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
-
-                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
-
-                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
-
-                            </div>
-
-                            <div class="tema-item">
-
-                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
-
-                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="midia">
-
-                        <div class="card-imagem">
-
-                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
-
-                            <p>Visão futurista da SETEC com IA integrada</p>
-
-                        </div>
-
-                        <div class="video-container">
-
-                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- Rodapé -->
-
-    <footer>
-
-        <div class="container">
-
-            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
-
-            <p>SETEC - 2025</p>
-
-        </div>
-
-    </footer>
-
-    <nav>
-
-    <div class="container">
-
-        <ul>
-
-            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-
-            <li><a href="curso.html"><i class="fas fa-laptop-code"></i> Curso</a></li>
-
-            <li><a href="ia.html"><i class="fas fa-brain"></i> IA</a></li>
-
-            <li><a href="setec.html"><i class="fas fa-microchip"></i> SETEC</a></li>
-
-        </ul>
-
-    </div>
-
-</nav>
-
-</body>
-
-</html>
-
-
-
-        /* Seção de temas */
-
-        .temas-container {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-            gap: 2.5rem;
-
-            margin-top: 2.5rem;
-
-        }
-
-
-
-        .tema-card {
-
-            background: linear-gradient(to bottom right, var(--navy), var(--slate));
-
-            padding: 2rem;
-
-            border-radius: 10px;
-
-            box-shadow: var(--shadow);
-
-            transition: var(--transition);
-
-            text-align: center;
-
-            border: 1px solid rgba(59, 130, 246, 0.1);
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-
-        .tema-card::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: -50%;
-
-            left: -50%;
-
-            width: 200%;
-
-            height: 200%;
-
-            background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.1), transparent);
-
-            transform: rotate(45deg);
-
-            transition: var(--transition);
-
-            opacity: 0;
-
-        }
-
-
-
-        .tema-card:hover {
-
-            transform: translateY(-8px);
-
-            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
-
-            border-color: rgba(59, 130, 246, 0.3);
-
-        }
-
-
-
-        .tema-card:hover::before {
-
-            opacity: 1;
-
-            animation: shine 1.5s linear;
-
-        }
-
-
-
-        @keyframes shine {
-
-            0% { transform: rotate(45deg) translateX(-100%); }
-
-            100% { transform: rotate(45deg) translateX(100%); }
-
-        }
-
-
-
-        .tema-icon {
-
-            font-size: 2.8rem;
-
-            color: var(--blue);
-
-            margin-bottom: 1.2rem;
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-
-        .tema-card h3 {
-
-            color: var(--text);
-
-            margin-bottom: 1rem;
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-
-        .tema-card p {
-
-            color: var(--text-secondary);
-
-            position: relative;
-
-            z-index: 2;
-
-            margin-bottom: 0.8rem;
-
-        }
-
-
-
-        /* Seção de temas horizontal */
-
-        .secao-temas {
-
-            padding: 5rem 0;
-
-            background: linear-gradient(to bottom, var(--section2-bg), var(--navy));
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-
-        .temas-wrapper {
-
-            overflow-x: auto;
-
-            padding-bottom: 2rem;
-
-        }
-
-
-
-        .temas-wrapper .temas-container {
-
-            display: flex;
-
-            flex-wrap: nowrap;
-
-            grid-template-columns: none;
-
-            gap: 2rem;
-
-            padding-bottom: 1rem;
-
-        }
-
-
-
-        .temas-wrapper .tema-card {
-
-            min-width: 350px;
-
-            flex-shrink: 0;
-
-        }
-
-
-
-        .scroll-instruction {
-
-            text-align: center;
-
-            margin-top: 1.5rem;
-
-            color: var(--light-blue);
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 0.5rem;
-
-        }
-
-
-
-        /* Lista de temas */
-
-        .temas-lista {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 1.8rem;
-
-            margin-top: 2rem;
-
-        }
-
-
-
-        .tema-item {
-
-            background: linear-gradient(to right, rgba(26, 42, 63, 0.7), rgba(45, 58, 92, 0.7));
-
-            padding: 1.8rem;
-
-            border-radius: 10px;
-
-            box-shadow: var(--shadow);
-
-            transition: var(--transition);
-
-            border-left: 4px solid var(--blue);
-
-            position: relative;
-
-            overflow: hidden;
-
-        }
-
-
-
-        .tema-item::before {
-
-            content: '';
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 100%;
-
-            background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.05), transparent);
-
-            transform: translateX(-100%);
-
-            transition: var(--transition);
-
-        }
-
-
-
-        .tema-item:hover {
-
-            transform: translateX(8px);
-
-            box-shadow: 0 8px 20px rgba(2, 12, 27, 0.6);
-
-        }
-
-
-
-        .tema-item:hover::before {
-
-            transform: translateX(100%);
-
-        }
-
-
-
-        .tema-item h4 {
-
-            color: var(--text);
-
-            margin-bottom: 0.8rem;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 0.8rem;
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-
-        .tema-item p {
-
-            color: var(--text-secondary);
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-
-        /* Rodapé */
-
-        footer {
-
-            background: var(--navy);
-
-            color: var(--text);
-
-            text-align: center;
-
-            padding refaça este codigo, cada sessao com o fundo de uma cor diferente, sem mudar o resto e com mais detalhes azul
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Desenvolvimento de Sistemas - SETEC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis de cores */
+        :root {
+            --midnight: #0a192f;
+            --navy: #112240;
+            --slate: #1d3a5c;
+            --light-slate: #2e4e7a;
+            --blue: #3b82f6;
+            --light-blue: #93c5fd;
+            --lightest-blue: #e0f2fe;
+            --accent: #f59e0b;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --shadow: 0 4px 20px rgba(2, 12, 27, 0.7);
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
             
+            /* Novas cores para as seções */
+            --section1-bg: #0a192f;
+            --section2-bg: #1a3658;
+            --section3-bg: #243b53;
+        }
+
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--midnight);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(28, 64, 117, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(28, 64, 117, 0.2) 0%, transparent 25%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, var(--midnight), var(--navy));
+            color: var(--text);
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(59, 130, 246, 0.1) 50%, transparent 51%);
+            background-size: 10px 10px;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: var(--light-blue);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.7rem 1.2rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--blue);
+            transform: translateX(-100%);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--light-blue);
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        nav a:hover::before {
+            transform: translateX(0);
+        }
+
+        nav a.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--light-blue);
+        }
+
+        nav a.active::before {
+            transform: translateX(0);
+        }
+
+        /* Seções */
+        .secao {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        #secao1 {
+            background-color: var(--section1-bg);
+        }
+
+        #secao2 {
+            background-color: var(--section2-bg);
+        }
+
+        #secao3 {
+            background-color: var(--section3-bg);
+        }
+
+        .secao::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 98%, rgba(59, 130, 246, 0.05) 100%);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .secao h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text);
+            font-size: 2.4rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .secao h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--blue), transparent);
+            border-radius: 2px;
+        }
+
+        .conteudo {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .texto {
+            flex: 1;
+        }
+
+        .texto p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .midia {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Cards de imagem */
+        .card-imagem {
+            background: linear-gradient(to bottom, var(--navy), var(--slate));
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .card-imagem:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card-imagem img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .card-imagem:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-imagem p {
+            padding: 1.2rem;
+            text-align: center;
+            font-style: italic;
+            color: var(--light-blue);
+            background: rgba(17, 34, 64, 0.7);
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        /* Container de vídeo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            background: var(--navy);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Seção de temas */
+        .temas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .tema-card {
+            background: linear-gradient(to bottom right, var(--navy), var(--slate));
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tema-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .tema-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(2, 12, 27, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .tema-card:hover::before {
+            opacity: 1;
+            animation: shine 1.5s linear;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+
+        .tema-icon {
+            font-size: 2.8rem;
+            color: var(--blue);
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tema-card h3 {
+            color: var(--text);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tema-card p {
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Seção de temas horizontal */
+        .secao-temas {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--section2-bg), var(--navy));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .temas-wrapper {
+            overflow-x: auto;
+            padding-bottom: 2rem;
+        }
+
+        .temas-wrapper .temas-container {
+            display: flex;
+            flex-wrap: nowrap;
+            grid-template-columns: none;
+            gap: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .temas-wrapper .tema-card {
+            min-width: 350px;
+            flex-shrink: 0;
+        }
+
+        .scroll-instruction {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--light-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Lista de temas */
+        .temas-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .tema-item {
+            background: linear-gradient(to right, rgba(26, 42, 63, 0.7), rgba(45, 58, 92, 0.7));
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tema-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: var(--transition);
+        }
+
+        .tema-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(2, 12, 27, 0.6);
+        }
+
+        .tema-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .tema-item h4 {
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tema-item p {
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--navy);
+            color: var(--text);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--blue), transparent);
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .conteudo {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            
+            .temas-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .temas-wrapper .temas-container {
+                flex-direction: column;
+            }
+            
+            .temas-wrapper .tema-card {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .secao h2 {
+                font-size: 1.9rem;
+            }
+            
+            .secao {
+                padding: 3rem 0;
+            }
+            
+            nav a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1>Curso de Desenvolvimento de Sistemas</h1>
+            <p>Preparando os profissionais de tecnologia do futuro</p>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="curso.html" class="active"><i class="fas fa-laptop-code"></i> Curso</a></li>
+                <li><a href="ia.html"><i class="fas fa-brain"></i> IA</a></li>
+                <li><a href="setec.html"><i class="fas fa-microchip"></i> SETEC</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- PRIMEIRA SEÇÃO -->
+        <section id="secao1" class="secao">
+            <div class="container">
+                <h2>Curso de Desenvolvimento de Sistemas</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <p>O curso de Desenvolvimento de Sistemas com o Ensino fundamental é uma formação técnica que prepara jovens profissionais para atuar no desenvolvimento de software, abrangendo desde a análise de requisitos até a implementação e manutenção de sistemas computacionais, que tem sido essenciais para atualmente.</p>
+                        <p>Com duração média de 3/4 anos, o curso combina fundamentos da computação com as tecnologias mais recentes do mercado, capacitando os estudantes para criar soluções digitais inovadoras e eficientes que tem ajudado pessoas de todas as idades e de todos os lugares.</p>
+                        <p>Entre as competências desenvolvidas estão: programação em diversas linguagens (Java, Python...), desenvolvimento web (HTML, CSS, JavaScript), banco de dados, programação mobile entre outras disciplinas.</p>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Estudantes do curso de DS trabalhando em projeto prático">
+                            <p>Estudantes desenvolvendo projetos práticos</p>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/L61VM6wPFwY" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEGUNDA SEÇÃO - TEMAS DE IA -->
+        <section id="secao2" class="secao-temas">
+            <div class="container">
+                <h2>Temas de Inteligência Artificial</h2>
+                <div class="temas-wrapper">
+                    <div class="temas-container">
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Perigos da IA</h3>
+                            <p>A Inteligência Artificial, apesar de seus avanços promissores, apresenta diversos perigos que exigem atenção e regulamentação cuidadosa. Os sistemas de IA podem tomar decisões imprevisíveis e potencialmente perigosas quando não são devidamente supervisionados.</p>
+                            <p>Além disso, a complexidade de alguns algoritmos torna difícil prever todos os possíveis resultados, especialmente em situações críticas onde vidas ou recursos importantes estão em jogo.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/CmAcro8YblU" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <h3>Exemplos de Perigos</h3>
+                            <p>Viés e Discriminação: Algoritmos podem perpetuar e amplificar preconceitos existentes nos dados de treinamento.</p>
+                            <p>Perda de Privacidade: Sistemas de vigilância e análise de dados podem invadir a privacidade individual.</p>
+                            <p>Deslocamento de Trabalhadores: Automação pode substituir empregos em larga escala.</p>
+                            <p>Decisões Opacas: Mecanismos de decisão não transparentes em áreas críticas como justiça e saúde.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/i6xbl9QzIK0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Proteção e Ética</h3>
+                            <p>É fundamental desenvolver frameworks éticos robustos para o desenvolvimento e implementação de IA. Isso inclui:</p>
+                            <p>Transparência algorítmica, Prestação de contas sobre decisões, Regulamentações governamentais, Auditorias independentes, Mecanismos de supervisão humana.</p>
+                            <p>Sem essas salvaguardas, os riscos associados à IA podem superar seus benefícios, criando sérios problemas para a sociedade.</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/5HP_w-Rtoqc" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="tema-card">
+                            <div class="tema-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Impacto Social</h3>
+                            <p>A IA está transformando profundamente a sociedade em múltiplos níveis:</p>
+                            <p>Economia: Mudanças no mercado de trabalho and novos modelos de negócio.</p>
+                            <p>Educação: Novas ferramentas de aprendizado e adaptação curricular.</p>
+                            <p>Saúde: Diagnósticos precisos e tratamentos personalizados.</p>
+                            <p>Comunicação: Tradução instantânea e assistentes virtuais.</p>
+                            <p>Essas transformações trazem tanto oportunidades quanto desafios que devem ser cuidadosamente gerenciados.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-instruction">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <span>Role horizontalmente para ver mais temas</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TERCEIRA SEÇÃO -->
+        <section id="secao3" class="secao">
+            <div class="container">
+                <h2>SETEC: Visão Futurista</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <p>Imaginamos a SETEC desse ano como uma feira de muita aprendizagem, completamente integrado com inteligência artificial em todos os aspectos educacionais.</p>
+                        <p>Em nossa visão, a SETEC já é uma referência na educação tecnológica. Todos os estudantes que participam da feira SETEC saem com muito mais aprendizado.</p>
+                        <h3>Alguns temas que podem ser implementados:</h3>
+                        <div class="temas-lista">
+                            <div class="tema-item">
+                                <h4><i class="fas fa-radiation"></i> Os perigos da IA</h4>
+                                <p>A inteligência artificial apresenta riscos significativos como vieses algorítmicos que perpetuam discriminações, invasão de privacidade em larga escala, substituição de postos de trabalho e o desenvolvimento de armas autônomas.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-heartbeat"></i> IA na saúde</h4>
+                                <p>Enquanto a IA revoluciona diagnósticos médicos e descoberta de medicamentos, também apresenta perigos como algoritmos enviesados que podem negar tratamentos e vulnerabilidades de privacidade de dados sensíveis.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-newspaper"></i> Fake News</h4>
+                                <p>Sistemas de IA podem gerar e disseminar desinformação em escala massiva através de deepfakes convincentes, textos automatizados e perfis falsos, dificultando a distinção entre informação real e fabricada.</p>
+                            </div>
+                            <div class="tema-item">
+                                <h4><i class="fas fa-paint-brush"></i> O poder da IA nas criações</h4>
+                                <p>Ferramentas de IA gerativa criam arte, música e conteúdo, mas levantam questões sobre propriedade intelectual, originalidade e o possível esvaziamento da expressão humana autêntica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Visão futurista da SETEC com tecnologia avançada">
+                            <p>Visão futurista da SETEC com IA integrada</p>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/IH-wBijX53M" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>Projeto desenvolvido para a avaliação de Front-End - Curso de Desenvolvimento de Sistemas</p>
+            <p>SETEC - 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
