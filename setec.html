@@ -6,7 +6,278 @@
     <title>SETEC - Feira de Tecnologia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Seu CSS completo aqui (o mesmo do index.html) */
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: #4a6491;
+            color: white;
+        }
+        
+        nav i {
+            margin-right: 8px;
+        }
+        
+        /* Seções */
+        .secao {
+            padding: 50px 0;
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .secao h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .secao h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #4a6491, #2c3e50);
+            border-radius: 2px;
+        }
+        
+        .conteudo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .texto, .midia {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .texto h3 {
+            color: #4a6491;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        .texto h3:first-child {
+            margin-top: 0;
+        }
+        
+        .texto h3 i {
+            margin-right: 10px;
+            color: #2c3e50;
+        }
+        
+        .texto p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Cards de imagem */
+        .card-imagem {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-imagem:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-imagem img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .card-imagem p {
+            padding: 15px;
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            background: #f9f9f9;
+        }
+        
+        /* Container de temas */
+        .temas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .tema-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .tema-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tema-icon {
+            font-size: 2.5rem;
+            color: #4a6491;
+            margin-bottom: 20px;
+        }
+        
+        .tema-card h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .tema-card p {
+            margin-bottom: 10px;
+        }
+        
+        .tema-card strong {
+            color: #2c3e50;
+        }
+        
+        /* Botão de inscrição */
+        .btn-inscricao {
+            display: inline-block;
+            background: linear-gradient(to right, #4a6491, #2c3e50);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-inscricao:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+        }
+        
+        /* Rodapé */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                text-align: center;
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .secao h2 {
+                font-size: 1.8rem;
+            }
+            
+            .conteudo {
+                flex-direction: column;
+            }
+            
+            .temas-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -38,13 +309,16 @@
                 <div class="conteudo">
                     <div class="texto">
                         <h3><i class="fas fa-history"></i> História</h3>
-                        <p>A SETEC (Semana de Tecnologia) é um evento anual que reúne estudantes, professores e profissionais da área de tecnologia para compartilhar conhecimentos, experiências e inovações.</p>
+                        <p>A SETEC (Semana de Tecnologia) é um evento anual que reúne estudantes, professores e profissionais da área de tecnologia para compartilhar conhecimentos, experiências e inovações. Desde sua primeira edição em 2010, a SETEC tem crescido constantemente, tornando-se referência em eventos tecnológicos na região.</p>
                         
                         <h3><i class="fas fa-bullseye"></i> Objetivos</h3>
-                        <p>Promover a integração entre academia e mercado, apresentar novas tecnologias, incentivar a pesquisa e o desenvolvimento de projetos inovadores, e preparar os estudantes para os desafios do mundo profissional.</p>
+                        <p>Promover a integração entre academia e mercado, apresentar novas tecnologias, incentivar a pesquisa e o desenvolvimento de projetos inovadores, e preparar os estudantes para os desafios do mundo profissional. A SETEC busca inspirar a próxima geração de profissionais de tecnologia.</p>
 
                         <h3><i class="fas fa-calendar-alt"></i> Programação</h3>
-                        <p>A feira conta com palestras, workshops, competições de programação, exposição de projetos desenvolvidos pelos alunos e muito mais, sempre com foco nas últimas tendências tecnológicas.</p>
+                        <p>A feira conta com palestras, workshops, competições de programação, exposição de projetos desenvolvidos pelos alunos e muito mais, sempre com foco nas últimas tendências tecnológicas. São cinco dias de imersão no mundo da tecnologia, com atividades para todos os níveis de conhecimento.</p>
+                        
+                        <h3><i class="fas fa-award"></i> Impacto</h3>
+                        <p>Ao longo dos anos, a SETEC já recebeu mais de 10.000 visitantes, apresentou mais de 500 projetos estudantis e contou com a participação de dezenas de empresas do setor de tecnologia. Muitos projetos apresentados na feira evoluíram para startups de sucesso.</p>
                     </div>
                     <div class="midia">
                         <div class="card-imagem">
@@ -72,6 +346,7 @@
                         <p><strong>Data:</strong> 15 a 19 de Novembro de 2025</p>
                         <p><strong>Local:</strong> Ginásio da Escola</p>
                         <p><strong>Horário:</strong> 8h às 21h</p>
+                        <p><strong>Entrada:</strong> Gratuita para estudantes</p>
                     </div>
                     <div class="tema-card">
                         <div class="tema-icon">
@@ -82,6 +357,8 @@
                         <p>• Hackathon de 24 horas</p>
                         <p>• Palestras com profissionais renomados</p>
                         <p>• Exposição de projetos inovadores</p>
+                        <p>• Workshop de Realidade Aumentada</p>
+                        <p>• Demonstração de Impressão 3D</p>
                     </div>
                     <div class="tema-card">
                         <div class="tema-icon">
@@ -90,6 +367,28 @@
                         <h3>Inscrições</h3>
                         <p>As inscrições para participantes e expositores estão abertas até 10 de Novembro. Garanta já sua vaga!</p>
                         <p>Estudantes têm desconto especial.</p>
+                        <a href="#" class="btn-inscricao">Inscreva-se Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="secao">
+            <div class="container">
+                <h2>Patrocinadores e Apoiadores</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <h3><i class="fas fa-handshake"></i> Parcerias</h3>
+                        <p>A SETEC conta com o apoio de empresas líderes em tecnologia, instituições de ensino e órgãos governamentais que acreditam no potencial da inovação e educação tecnológica.</p>
+                        
+                        <h3><i class="fas fa-trophy"></i> Competições</h3>
+                        <p>As competições da SETEC oferecem premiações em dinheiro, estágios em empresas parceiras e mentoria para projetos vencedores. Participe e mostre seu talento!</p>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Patrocinadores SETEC">
+                            <p>Empresas patrocinadoras da SETEC 2025</p>
+                        </div>
                     </div>
                 </div>
             </div>
