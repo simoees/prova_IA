@@ -6,7 +6,260 @@
     <title>Inteligência Artificial - SETEC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Seu CSS completo aqui (o mesmo do index.html) */
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: #4a6491;
+            color: white;
+        }
+        
+        nav i {
+            margin-right: 8px;
+        }
+        
+        /* Seções */
+        .secao {
+            padding: 50px 0;
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .secao h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .secao h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #4a6491, #2c3e50);
+            border-radius: 2px;
+        }
+        
+        .conteudo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .texto, .midia {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .texto h3 {
+            color: #4a6491;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        .texto h3:first-child {
+            margin-top: 0;
+        }
+        
+        .texto h3 i {
+            margin-right: 10px;
+            color: #2c3e50;
+        }
+        
+        .texto p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Cards de imagem */
+        .card-imagem {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        
+        .card-imagem img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .card-imagem p {
+            padding: 15px;
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            background: #f9f9f9;
+        }
+        
+        /* Vídeo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Lista de temas */
+        .temas-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .tema-item {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tema-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tema-item h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .tema-item h4 i {
+            margin-right: 10px;
+            color: #4a6491;
+        }
+        
+        /* Rodapé */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                text-align: center;
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .secao h2 {
+                font-size: 1.8rem;
+            }
+            
+            .conteudo {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -45,6 +298,9 @@
 
                         <h3><i class="fas fa-stethoscope"></i> IA na Saúde</h3>
                         <p>Na área médica, a IA auxilia no diagnóstico de doenças, análise de imagens médicas, descoberta de novos medicamentos e personalização de tratamentos, melhorando significativamente os resultados para os pacientes.</p>
+                        
+                        <h3><i class="fas fa-graduation-cap"></i> IA na Educação</h3>
+                        <p>Plataformas educacionais inteligentes adaptam o conteúdo conforme o desempenho do aluno, oferecem tutoria personalizada e automatizam tarefas administrativas, permitindo que educadores se concentrem no ensino.</p>
                     </div>
                     <div class="midia">
                         <div class="card-imagem">
@@ -74,6 +330,27 @@
                     <div class="tema-item">
                         <h4><i class="fas fa-code"></i> Geradores de Código</h4>
                         <p>Ferramentas como GitHub Copilot ajudam programadores a escrever código mais rapidamente, sugerindo trechos completos baseados no contexto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao">
+            <div class="container">
+                <h2>O Futuro da Inteligência Artificial</h2>
+                <div class="conteudo">
+                    <div class="texto">
+                        <h3><i class="fas fa-chart-line"></i> Tendências Emergentes</h3>
+                        <p>O futuro da IA inclui avanços em aprendizado não supervisionado, redes neurais mais complexas e sistemas capazes de raciocínio contextual mais profundo. A integração entre IA e outras tecnologias como IoT e blockchain promete criar soluções ainda mais inovadoras.</p>
+                        
+                        <h3><i class="fas fa-exclamation-triangle"></i> Considerações Éticas</h3>
+                        <p>À medida que a IA se torna mais presente em nossas vidas, questões sobre privacidade, viés algorítmico e responsabilidade tornam-se cada vez mais importantes. É crucial desenvolver frameworks éticos para guiar o desenvolvimento responsável da IA.</p>
+                    </div>
+                    <div class="midia">
+                        <div class="card-imagem">
+                            <img src="https://images.unsplash.com/photo-1677442135135-416f8aa26a5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Futuro da IA">
+                            <p>O futuro da IA trará transformações em todas as áreas da sociedade</p>
+                        </div>
                     </div>
                 </div>
             </div>
